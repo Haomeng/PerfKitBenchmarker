@@ -147,7 +147,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
       logging.info('Testing OpenStack CLI command is installed and working')
       cmd = os_utils.OpenStackCLICommand(self, 'image', 'list')
       stdout, stderr, _ = cmd.Issue()
-      if stderr:
+      if "WARNING" not in stderr:
         raise errors.Config.InvalidValue(
             'OpenStack CLI test command failed. Please make sure the OpenStack '
             'CLI client is installed and properly configured')
@@ -228,7 +228,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
     if err_msg is None:
       err_msg = ""
     stdout, stderr, _ = cmd.Issue()
-    if stderr:
+    if "WARNING" not in stderr:
       raise errors.Config.InvalidValue(err_msg)
     return stdout
 
@@ -262,7 +262,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
     """Execute command for creating an OpenStack VM instance."""
     create_cmd = self._GetCreateCommand()
     stdout, stderr, _ = create_cmd.Issue()
-    if stderr:
+    if "WARNING" not in stderr:
       raise errors.Error(stderr)
     resp = json.loads(stdout)
     self.id = resp['id']
