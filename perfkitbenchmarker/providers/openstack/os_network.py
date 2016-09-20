@@ -30,13 +30,15 @@ OSC_FLOATING_SUBCMD = 'floating'
 OSC_SEC_GROUP_CMD = 'security group'
 OSC_SEC_GROUP_RULE_CMD = 'security group rule'
 
-SC_GROUP_NAME = 'perfkit_sc_group'
+#SC_GROUP_NAME = 'perfkit_sc_group'
 
 ICMP = 'icmp'
 TCP = 'tcp'
 UDP = 'udp'
 
 FLAGS = flags.FLAGS
+
+SC_GROUP_NAME = 'perfkit_sc_group%s' % FLAGS.run_uri
 
 MAX_PORT = 65535
 
