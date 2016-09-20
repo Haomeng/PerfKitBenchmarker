@@ -84,7 +84,7 @@ class OpenStackVirtualMachine(virtual_machine.BaseVirtualMachine):
   @property
   def group_id(self):
     """Returns the security group ID of this VM."""
-    return 'perfkit_sc_group'
+    return 'perfkit_sc_group%s' % FLAGS.run_uri
 
   def _CreateDependencies(self):
     """Validate and Create dependencies prior creating the VM."""
