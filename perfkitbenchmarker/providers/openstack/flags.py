@@ -72,3 +72,19 @@ flags.DEFINE_enum('openstack_scheduler_policy', NONE,
                   [NONE, 'affinity', 'anti-affinity'],
                   'Add possibility to use affinity or anti-affinity '
                   'policy in scheduling process')
+
+flags.DEFINE_string('openstack_identity_api_version',
+                    os.environ.get('OS_IDENTITY_API_VERSION'),
+                    ('Keystone endpoint version, default to OS_IDENTITY_API_VERSION'))
+
+flags.DEFINE_string('openstack_project_id',
+                    os.environ.get('OS_PROJECT_ID'),
+                    ('keystone project id for api version v3'))
+
+flags.DEFINE_string('openstack_user_domain_name',
+                    os.environ.get('OS_USER_DOMAIN_NAME'),
+                    ('for identity v3'))
+
+flags.DEFINE_string('openstack_username',
+                    os.getenv('OS_USERNAME', 'admin'),
+                    'OpenStack login username, defaults to $OS_USERNAME.')
